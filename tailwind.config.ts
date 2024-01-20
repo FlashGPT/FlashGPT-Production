@@ -8,6 +8,12 @@ const CustomStyle = plugin(function({addUtilities}) {
     },
     ".preserve-3d" : {
       transformStyle: "preserve-3d"
+    },
+    ".perspective-1000" : {
+      perspective: "1000px"
+    },
+    ".backface-hidden" : {
+      backfaceVisibility: "hidden"
     }
   })
 })

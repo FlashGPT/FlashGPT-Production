@@ -4,11 +4,7 @@ import ThreeSixtyIcon from "@mui/icons-material/ThreeSixty";
 import { useRouter } from "next/router";
 import { getAuthSession } from "@/utils/authUtils/getAuthSession";
 import { fetchAuthUsernameAll } from "@/utils/fetchUtils/fetchAuthUsernameAll";
-import {
-  CategoryFetch,
-  FlashcardDeckFetch,
-  FlashcardFetch,
-} from "@/model/sanityFetchTypings";
+import { FlashcardDeckFetch, FlashcardFetch } from "@/model/sanityFetchTypings";
 import Carousel from "react-material-ui-carousel";
 import { Paper } from "@mui/material";
 
@@ -24,8 +20,6 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
     (deck) => deck._id === deckId,
   );
   const flashcards: FlashcardFetch[] = decks.flatMap((deck) => deck.flashcard);
-  const categories: CategoryFetch[] = decks.flatMap((deck) => deck.category);
-  console.log(flashcards);
 
   const [idx, setIdx] = useState(0);
 
@@ -38,7 +32,7 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
   };
 
   return (
-    <div className="h-2/3 w-full my-16 mx-8 space-y-4">
+    <div className="h-2/3 w-full my-16 mx-8 space-y-8">
       <div className="flex items-center justify-between font-bold text-2xl">
         <h1>{decks[0].category.name}</h1>
       </div>
@@ -51,7 +45,7 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
         next={next}
         prev={prev}
         className="h-[500px]"
-        interval={10000}
+        interval={5000}
       >
         <FlashCard key={idx} flashCard={flashcards[idx]} />
       </Carousel>
@@ -84,24 +78,14 @@ function FlashCard({ flashCard }: props2) {
 
   return (
     <Paper style={{ height: "100%", border: "none" }}>
-      <div className="group h-[500px] w-auto border">
-        <div className="relative h-full w-full group-hover:rotate-y-180 preserve-3d transition-all duration-500">
-          <div className="bg-[#003050] mx-20 rounded-xl absolute p-16 h-[500px] flex justify-center items-center">
-            <h1 className="text-white text-xl">{flashCard.question}</h1>
-          </div>
-
-          <div className="bg-[#6EAAFF] mx-20 rounded-xl absolute p-16 h-[500px] flex justify-center items-center">
-            <h1 className="text-white text-xl">{flashCard.answer}</h1>
-          </div>
-        </div>
-      </div>
-      {/* {!flip && (
+      {!flip && (
         <div className="bg-[#003050] mx-20 rounded-xl relative p-16 h-[500px] flex justify-center items-center">
           <h1 className="text-white text-xl">{flashCard.question}</h1>
           <button
-            className="absolute color-white right-0 bottom-0 cursor-pointer z-20"
+            className="absolute color-white right-10 bottom-10 cursor-pointer z-20 flex justify-center items-center gap-2"
             onClick={onClick}
           >
+            <h1 className="text-white">Front </h1>
             <ThreeSixtyIcon
               className="text-white text-4xl hover:rotate-[20deg]"
               onClick={onClick}
@@ -114,13 +98,14 @@ function FlashCard({ flashCard }: props2) {
         <div className="bg-[#6EAAFF] mx-20 rounded-xl relative p-16 h-[500px] flex justify-center items-center">
           <h1 className="text-white text-xl">{flashCard.answer}</h1>
           <button
-            className="absolute color-white right-0 bottom-0 cursor-pointer z-20"
+            className="absolute color-white right-10 bottom-10 cursor-pointer z-20 flex justify-center items-center gap-2"
             onClick={onClick}
           >
+            <h1 className="text-white">Back </h1>
             <ThreeSixtyIcon className="text-white text-4xl hover:rotate-[20deg]" />
           </button>
         </div>
-      )} */}
+      )}
     </Paper>
   );
 }

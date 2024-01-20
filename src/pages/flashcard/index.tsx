@@ -58,9 +58,9 @@ export default function Flashcard({
   ];
 
   return (
-    <div className="h-full w-full flex items-left justify-left my-16 mx-8 flex-col gap-10">
+    <div className="h-full w-full flex items-left justify-left my-16 mx-8 flex-col gap-10 overflow-y-scroll">
       <h1 className="text-4xl font-semibold mt-10">Recent Cards</h1>
-      <div className="w-full flex gap-20">
+      <div className="w-full flex justify-evenly gap-20">
         {decks.map(
           (
             deck,
@@ -87,11 +87,11 @@ export default function Flashcard({
           );
         }}
       />
-      <div className="grid grid-cols-3 gap-2 overflow-auto max-w-5xl mr-10">
+      <div className="grid grid-cols-3 gap-2 max-w-5xl mr-10">
         {searchFlashCardDecks.map((deck, key) => (
           <Link key={key} href={`/flashcard/${deck._id}`}>
             <div
-              className="p-5 my-2 rounded-lg min-h-32"
+              className="p-5 my-2 rounded-lg min-h-28 hover:underline text-white hover:opacity-80 transition-all"
               style={{
                 backgroundColor: categoryToColors.get(deck.category.name),
               }}
@@ -104,7 +104,6 @@ export default function Flashcard({
                 <h1 className="text-white text-xl font-bold">{deck.name}</h1>
                 <ArrowOutwardRoundedIcon style={{ color: "white" }} />
               </div>
-
               <h6 className="text-white text-sm font-light">
                 {deck.description}
               </h6>

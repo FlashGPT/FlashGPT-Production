@@ -3,10 +3,7 @@ import ArrowRightRoundedIcon from "@mui/icons-material/ArrowRightRounded";
 import { weekDateCondition } from "@/utils/createUtils/dateUtils";
 import { getCategoryToColorsMap } from "@/utils/createUtils/colorUtils";
 import React from "react";
-import {
-  FlashcardDeckFetch,
-  CalendarFetch,
-} from "../model/sanityFetchTypings";
+import { FlashcardDeckFetch, CalendarFetch } from "../model/sanityFetchTypings";
 import { getAuthSession } from "@/utils/authUtils/getAuthSession";
 import { fetchAuthUsernameAll } from "@/utils/fetchUtils/fetchAuthUsernameAll";
 import Link from "next/link";
@@ -68,7 +65,7 @@ export default function Space({ calendars, flashcardDecks }: Props) {
             {decks.map((deck, key) => (
               <Link key={key} href={`/flashcard/${deck._id}`}>
                 <div
-                  className="p-5 my-2 rounded-lg"
+                  className="p-5 my-2 rounded-lg text-white hover:underline hover:opacity-80 transition-all min-h-28"
                   style={{
                     backgroundColor: categoryToColors.get(deck.category.name),
                   }}
