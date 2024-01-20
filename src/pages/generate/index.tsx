@@ -234,6 +234,14 @@ export async function getServerSideProps(context: any) {
     const auth = await fetchAuthUsernameAll("", session.user.email);
     const user = auth[0];
     const categories = user.category;
+
+    return {
+      props: {
+        session,
+        categories,
+        user,
+      },
+    };
   
   } catch (error:any) {
     console.error(error.message);
@@ -241,9 +249,6 @@ export async function getServerSideProps(context: any) {
 
   return {
     props: {
-      session,
-      categories,
-      user,
     },
   };
   
