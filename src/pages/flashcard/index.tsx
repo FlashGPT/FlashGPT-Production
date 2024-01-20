@@ -44,7 +44,6 @@ export default function Flashcard({
   const [searchFlashCardDecks, setSearchFlashCardDecks] = useState(
     flashcardDecks.slice(),
   );
-  const [selectedCategory, setSelectedCategory] = useState<CategoryFetch[]>([]);
 
   const DECK_COLORS = [
     ["#9AB1D1", "#013B8C", "#00FFFF,"],
@@ -59,8 +58,8 @@ export default function Flashcard({
   ];
 
   return (
-    <div className="h-full w-full flex items-left justify-left ml-5 flex-col gap-10">
-      <h1 className="text-2xl font-bold mt-10">Recent Cards</h1>
+    <div className="h-full w-full flex items-left justify-left my-16 mx-8 flex-col gap-10">
+      <h1 className="text-4xl font-semibold mt-10">Recent Cards</h1>
       <div className="w-full flex gap-20">
         {decks.map(
           (
@@ -79,6 +78,10 @@ export default function Flashcard({
       <Dropdown
         arr={categories.map((x) => x.name)}
         setArr={(substring: string) => {
+          if (substring === "all") {
+            setSearchFlashCardDecks(flashcardDecks);
+            return;
+          }
           setSearchFlashCardDecks(
             flashcardDecks.filter((x) => x.category.name === substring),
           );
@@ -88,7 +91,7 @@ export default function Flashcard({
         {searchFlashCardDecks.map((deck, key) => (
           <Link key={key} href={`/flashcard/${deck._id}`}>
             <div
-              className="p-5 my-2 rounded-lg"
+              className="p-5 my-2 rounded-lg min-h-32"
               style={{
                 backgroundColor: categoryToColors.get(deck.category.name),
               }}

@@ -70,7 +70,7 @@ export default function Sidebar() {
   function renderSideBarElements() {
     return (
       <>
-        <div className="basis-1/6 flex items-center justify-start p-4">
+        <div className="basis-1/6 flex items-center justify-start p-4 overflow-hidden">
           <div className="justify-center items-center flex">
             <button
               className="w-[28px] h-[28px] object-contain cursor-pointer bg-transparent rounded-full opacity-80 hover:opacity-100 z-30 flex lg:hidden"
@@ -102,10 +102,10 @@ export default function Sidebar() {
           } items-start justify-start p-5`}
         >
           <div className="flex items-start flex-col gap-5">
-            <Link className="flex items-center gap-2" href="/space">
+            <Link className="flex items-center gap-2" href="/">
               <Image
                 src={
-                  pathname === "/space"
+                  pathname === "/"
                     ? "/assets/home-active.png"
                     : "/assets/home.png"
                 }
@@ -115,7 +115,7 @@ export default function Sidebar() {
               />
               <h1
                 className={`text-center ${
-                  pathname === "/space" ? "text-teal-950" : "text-slate-400"
+                  pathname === "/" ? "text-teal-950" : "text-slate-400"
                 } text-lg font-bold`}
               >
                 Space

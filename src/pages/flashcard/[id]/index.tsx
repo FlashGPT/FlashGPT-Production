@@ -38,7 +38,7 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
   };
 
   return (
-    <div className="h-2/3 w-full m-20">
+    <div className="h-2/3 w-full my-16 mx-8 space-y-4">
       <div className="flex items-center justify-between font-bold text-2xl">
         <h1>{decks[0].category.name}</h1>
       </div>
@@ -84,7 +84,18 @@ function FlashCard({ flashCard }: props2) {
 
   return (
     <Paper style={{ height: "100%", border: "none" }}>
-      {!flip && (
+      <div className="group h-[500px] w-auto border">
+        <div className="relative h-full w-full group-hover:rotate-y-180 preserve-3d transition-all duration-500">
+          <div className="bg-[#003050] mx-20 rounded-xl absolute p-16 h-[500px] flex justify-center items-center">
+            <h1 className="text-white text-xl">{flashCard.question}</h1>
+          </div>
+
+          <div className="bg-[#6EAAFF] mx-20 rounded-xl absolute p-16 h-[500px] flex justify-center items-center">
+            <h1 className="text-white text-xl">{flashCard.answer}</h1>
+          </div>
+        </div>
+      </div>
+      {/* {!flip && (
         <div className="bg-[#003050] mx-20 rounded-xl relative p-16 h-[500px] flex justify-center items-center">
           <h1 className="text-white text-xl">{flashCard.question}</h1>
           <button
@@ -92,7 +103,7 @@ function FlashCard({ flashCard }: props2) {
             onClick={onClick}
           >
             <ThreeSixtyIcon
-              className="text-white text-4xl hover:rotate-[20deg] border"
+              className="text-white text-4xl hover:rotate-[20deg]"
               onClick={onClick}
             />
           </button>
@@ -109,7 +120,7 @@ function FlashCard({ flashCard }: props2) {
             <ThreeSixtyIcon className="text-white text-4xl hover:rotate-[20deg]" />
           </button>
         </div>
-      )}
+      )} */}
     </Paper>
   );
 }

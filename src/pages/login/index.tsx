@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-import Space from "../space";
+import Space from "..";
 
 type Props = {};
 

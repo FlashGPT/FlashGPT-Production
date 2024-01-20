@@ -16,6 +16,7 @@ import {
 import { createFlashcardDeck } from "@/utils/createUtils/createFlashcardDeck";
 import { modifyCategoryFlashcardDeck } from "@/utils/modifyUtils/modifyCategoryFlashcardDeck";
 import InputComponent from "@/components/InputComponent";
+import { useRouter } from "next/router";
 
 /**
  * Page to generate flashcards
@@ -46,6 +47,7 @@ export default function Generate({ categories, user }: Props) {
 
   // Status
   const [statusMessage, setStatusMessage] = useState<string>("Loading...");
+  const router = useRouter();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setUploadedFiles(acceptedFiles);
@@ -115,6 +117,8 @@ export default function Generate({ categories, user }: Props) {
         selectedCategory._id,
         resFlashcardDeck,
       );
+
+      router.push(`/flashcard/${resFlashcardDeck}`);
     } catch (error) {
       console.error("Error parsing flashcards:", error);
       throw error; // Rethrow the error if needed
@@ -146,8 +150,8 @@ export default function Generate({ categories, user }: Props) {
   }
 
   return (
-    <div className="w-full h-auto flex flex-col overflow-auto space-y-8 p-12">
-      <p className="text-4xl">Tell FlashGPT what to generate</p>
+    <div className="w-full h-auto flex flex-col overflow-auto space-y-8 my-16 mx-8">
+      <p className="text-4xl font-semibold">Tell FlashGPT what to generate</p>
       <div className="flex flex-col space-y-4">
         <div className="flex gap-2 items-center">
           <h1>Select Category:</h1>
@@ -195,15 +199,6 @@ export default function Generate({ categories, user }: Props) {
           {isLoading ? statusMessage : "Generate"}
         </button>
         {error != "" && <span className="text-red">{error}</span>}
-      </div>
-      <div className="flex flex-col w-[1000px] space-y-2">
-        {flashCards.length > 0 &&
-          flashCards.map((flashCard, index) => (
-            <div key={index} className="border border-grey p-2 rounded-md">
-              <div>Question: {flashCard.question}</div>
-              <div>Answer: {flashCard.answer}</div>
-            </div>
-          ))}
       </div>
     </div>
   );
