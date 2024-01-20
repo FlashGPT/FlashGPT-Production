@@ -8,9 +8,10 @@ import {
 } from "../model/sanityFetchTypings";
 import { getAuthSession } from "@/utils/authUtils/getAuthSession";
 import { fetchCalendar } from "@/utils/fetchUtils/fetchCalendar";
+import { fetchAuthUsernameAll } from "@/utils/fetchUtils/fetchAuthUsernameAll";
 
 type Props = {
-  auth: AuthFetch[];
+  user: AuthFetch;
   flashcardDecks: FlashcardDeckFetch[];
   contents: ContentFetch[];
   categories: CategoryFetch[];
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export default function Index({
-  auth,
+  user,
   flashcardDecks,
   contents,
   categories,
@@ -37,6 +38,9 @@ export default function Index({
           )
         })
       }
+      <div>
+        {user.name ?? ""}
+      </div>
     </div>
   );
 }
@@ -63,9 +67,21 @@ export async function getServerSideProps(context: any) {
     };
   }
 
+  const session = result.session;
+
+  if (!session || !session.user || !session.user.email) {
+    return {
+      props: {},
+    };
+  }
+
+  const auth = await fetchAuthUsernameAll("", session.user.email);
+  const user = auth[0];
+
   return {
     props: {
       calendars,
+      user
     },
   };
 }
