@@ -19,9 +19,6 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
       });
     });
 
-    console.log("data", data)
-    console.log("data.files", data.files)
-
     const file = data.files.file;
     const pdfExtract = new PDFExtract();
     const options: PDFExtractOptions = {
@@ -29,6 +26,8 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     };
     console.log("filepath", file[0].filepath, file[0])
     const result = await pdfExtract.extract(file[0].filepath, options);
+
+    console.log("result", result)
 
     const document: string[] = [];
     result.pages.map((item) => {
