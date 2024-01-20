@@ -18,6 +18,9 @@ import { modifyCategoryFlashcardDeck } from "@/utils/modifyUtils/modifyCategoryF
 import InputComponent from "@/components/InputComponent";
 import { useRouter } from "next/router";
 
+// @ts-ignore
+import extractTextFromPDF from "pdf-parser-client-side";
+
 /**
  * Page to generate flashcards
  */
@@ -74,14 +77,17 @@ export default function Generate({ categories, user }: Props) {
       return;
     }
 
-    const promises = uploadedFiles.map((file) => parseFlashcard(file));
+    // const promises = uploadedFiles.map((file) => parseFlashcard(file));
+    console.log("parsing...")
+    const combinedContent: string[] = []
+    for (let i = 0; i < uploadedFiles.length; i++) {
+      const data = await extractTextFromPDF(uploadedFiles[i]);
+      combinedContent.push(data)
+    }
 
     try {
-      setStatusMessage("Parsing...");
-      const combinedContent = await Promise.all(promises);
-      console.log(combinedContent);
 
-      setStatusMessage("Generating...");
+      console.log("Generating...", combinedContent);
       const completions = await openaiPrompt(combinedContent);
 
       setFlashCards(completions);
