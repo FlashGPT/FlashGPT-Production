@@ -15,7 +15,7 @@ export async function openaiPrompt(context: string[]): Promise<QA[]> {
 
   const completion = await openai.chat.completions.create({
     messages: [
-      { role: "system", content: generateInstructions(5) },
+      { role: "system", content: generateInstructions(12) },
       { role: "user", content: generatePrompt(context) }
     ],
     model: gpt4Turbo,
