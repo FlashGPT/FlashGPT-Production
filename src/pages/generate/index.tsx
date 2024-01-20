@@ -213,26 +213,31 @@ export default function Generate({ categories, user }: Props) {
  * Require authentication to access this page
  */
 export async function getServerSideProps(context: any) {
-  const result = await getAuthSession(context);
-  if (!result.isSession) {
-    return {
-      redirect: {
-        destination: result.redirect.destination,
-        permanent: result.redirect.permanent,
-      },
-    };
+  try {
+    const result = await getAuthSession(context);
+    if (!result.isSession) {
+      return {
+        redirect: {
+          destination: result.redirect.destination,
+          permanent: result.redirect.permanent,
+        },
+      };
+    }
+  
+    const session = result.session;
+    if (!session || !session.user || !session.user.email) {
+      return {
+        props: {},
+      };
+    }
+  
+    const auth = await fetchAuthUsernameAll("", session.user.email);
+    const user = auth[0];
+    const categories = user.category;
+  
+  } catch (error:any) {
+    console.error(error.message);
   }
-
-  const session = result.session;
-  if (!session || !session.user || !session.user.email) {
-    return {
-      props: {},
-    };
-  }
-
-  const auth = await fetchAuthUsernameAll("", session.user.email);
-  const user = auth[0];
-  const categories = user.category;
 
   return {
     props: {
@@ -241,4 +246,5 @@ export async function getServerSideProps(context: any) {
       user,
     },
   };
+  
 }
