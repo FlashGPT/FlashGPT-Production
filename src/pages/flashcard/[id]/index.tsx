@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArrowRightRoundedIcon from "@mui/icons-material/ArrowRightRounded";
 import ThreeSixtyIcon from "@mui/icons-material/ThreeSixty";
 import { useRouter } from "next/router";
@@ -15,12 +15,19 @@ type Props = {
 export default function FlashcardDetails({ flashcardDecks }: Props) {
   const router = useRouter();
   const deckId = router.query.id;
+  const [decks, setDecks] = useState<FlashcardDeckFetch[]>([]);
+  const [flashcards, setFlashcards] = useState<FlashcardFetch[]>([]);
   // get all the possible flashcards
-  const decks: FlashcardDeckFetch[] = flashcardDecks.filter(
-    (deck) => deck._id === deckId,
-  );
-  const flashcards: FlashcardFetch[] = decks.flatMap((deck) => deck.flashcard);
 
+  useEffect(() => {
+    const decks: FlashcardDeckFetch[] = flashcardDecks.filter(
+      (deck) => deck._id === deckId,
+    );
+    setDecks(decks);
+    const flashcards: FlashcardFetch[] = decks.flatMap((deck) => deck.flashcard);
+    setFlashcards(flashcards);
+  }, [flashcardDecks])
+  
   const [idx, setIdx] = useState(0);
 
   const next = () => {
@@ -30,6 +37,10 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
   const prev = () => {
     setIdx((idx + flashcards.length - 1) % flashcards.length);
   };
+
+  if (!decks || !decks[0]) {
+    return <div className="flex justify-center items-center">loading...</div>;
+  }
 
   return (
     <div className="h-2/3 w-full my-16 mx-8 space-y-8">
@@ -41,11 +52,10 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
         {decks[0].name}
       </div>
       <Carousel
-        animation="slide"
         next={next}
         prev={prev}
         className="h-[500px]"
-        interval={5000}
+        autoPlay={false}
       >
         <FlashCard key={idx} flashCard={flashcards[idx]} />
       </Carousel>
