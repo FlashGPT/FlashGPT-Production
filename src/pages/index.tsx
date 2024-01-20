@@ -7,6 +7,7 @@ import {
   FlashcardDeckFetch,
 } from "../model/sanityFetchTypings";
 import { getAuthSession } from "@/utils/authUtils/getAuthSession";
+import { fetchCalendar } from "@/utils/fetchUtils/fetchCalendar";
 
 type Props = {
   auth: AuthFetch[];
@@ -26,6 +27,16 @@ export default function Index({
   return (
     <div className="h-full w-full flex items-center justify-center">
       Welcome to the home page
+      {
+        calendars.map((calendar, key) => {
+          return (
+            <div key={key}>
+              <h1>{calendar._id}</h1>
+              <p>{calendar._rev}</p>
+            </div>
+          )
+        })
+      }
     </div>
   );
 }
@@ -35,6 +46,7 @@ export default function Index({
  */
 export async function getServerSideProps(context: any) {
   const result = await getAuthSession(context);
+  const calendars = await fetchCalendar()
 
   if (!result.isSession) {
     return {
@@ -52,6 +64,8 @@ export async function getServerSideProps(context: any) {
   }
 
   return {
-    props: {},
+    props: {
+      calendars,
+    },
   };
 }
