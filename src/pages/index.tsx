@@ -26,7 +26,7 @@ export default function Index({
   calendars,
 }: Props) {
   return (
-    <div className="h-full w-full flex items-center justify-center">
+    <div className="h-full w-full flex items-center justify-center flex-col">
       Welcome to the home page
       {
         calendars.map((calendar, key) => {
@@ -41,6 +41,7 @@ export default function Index({
       <div>
         {user.name ?? ""}
       </div>
+      <div>Change</div>
     </div>
   );
 }
