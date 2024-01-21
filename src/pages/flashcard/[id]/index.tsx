@@ -45,7 +45,7 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
   }
 
   return (
-    <div className="h-2/3 w-full my-16 mx-8 space-y-8">
+    <div className="max-h-screen w-full my-16 mx-8 space-y-8">
       <div className="flex items-center justify-between font-bold text-2xl">
         <h1 className="text-4xl font-semibold">{decks[0].category.name}</h1>
       </div>

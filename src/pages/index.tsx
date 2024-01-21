@@ -51,8 +51,8 @@ export default function Space({ calendars, flashcardDecks }: Props) {
   );
 
   return (
-    <div className="w-full flex items-left justify-left overflow-scroll my-16 mx-8">
-      <div className="basis-1/3 h-full">
+    <div className="w-full max-h-screen flex items-left justify-left overflow-scroll my-16 mx-8">
+      <div className="basis-1/3 h-full overflow-auto">
         <div className="my-5 p-5 rounded-lg bg-whitish shadow-lg">
           <div className="flex justify-between">
             <div>
