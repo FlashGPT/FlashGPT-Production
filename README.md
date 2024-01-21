@@ -17,6 +17,7 @@ FlashGPT takes pdf files from the user and turns them into a deck of flash cards
 - [Devpost](https://devpost.com/software/flashgpt)
 - [Figma](https://www.figma.com/file/YddVXz77XWcty9HwPBNJlQ/Frontend-Mockup-(FlashGPT)?type=design&node-id=102%3A61&mode=design&t=Suj8BBgDpbiSibRg-1)
 - [Hack n Roll Slides](https://www.canva.com/design/DAF6edy_3Q0/8simEphXDG3gcobS8aYP0g/watch?utm_content=DAF6edy_3Q0&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+- [Our Video](https://youtu.be/NigytnBYu8c)
 
 ## Features
 
