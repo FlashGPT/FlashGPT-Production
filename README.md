@@ -27,7 +27,7 @@ Store your flashcards and review them anytime.
 <img src="public/readme/flashcards.png" width="90%"/>
 
 Review your flashcards
-<img src="public/readme/answers.png" width="90%"/>
+<img src="public/readme/answer.png" width="90%"/>
 
 Keep track of your progress.
 <img src="public/readme/space.png" width="90%"/>
