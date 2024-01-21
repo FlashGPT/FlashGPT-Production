@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import ArrowRightRoundedIcon from "@mui/icons-material/ArrowRightRounded";
-import Dropdown from "@/components/Dropdown";
+import Dropdown from "@/components/dropdown";
 import { getCategoryToColorsMap } from "@/utils/createUtils/colorUtils";
 import { getAuthSession } from "@/utils/authUtils/getAuthSession";
 import { fetchAuthUsernameAll } from "@/utils/fetchUtils/fetchAuthUsernameAll";
