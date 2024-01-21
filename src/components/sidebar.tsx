@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import SideBarItem from "./SideBarItem";
 
 const role = "Student";
 const UNKNOWN_USER = "Unknown";
@@ -67,6 +68,27 @@ export default function Sidebar() {
     };
   }, []);
 
+  const SideBarItems = [
+    {
+      icon: "/assets/home.png",
+      iconActive: "/assets/home-active.png",
+      text: "Space",
+      href: "/",
+    },
+    {
+      icon: "/assets/card.png",
+      iconActive: "/assets/card-active.png",
+      text: "Flashcards",
+      href: "/flashcard",
+    },
+    {
+      icon: "/assets/logo.png",
+      iconActive: "/assets/logo-active.png",
+      text: "Generate Cards",
+      href: "/generate",
+    },
+  ];
+
   function renderSideBarElements() {
     return (
       <>
@@ -102,63 +124,9 @@ export default function Sidebar() {
           } items-start justify-start p-5`}
         >
           <div className="flex items-start flex-col gap-5">
-            <Link className="flex items-center gap-2" href="/">
-              <Image
-                src={
-                  pathname === "/"
-                    ? "/assets/home-active.png"
-                    : "/assets/home.png"
-                }
-                width={40}
-                height={40}
-                alt=""
-              />
-              <h1
-                className={`text-center ${
-                  pathname === "/" ? "text-teal-950" : "text-slate-400"
-                } text-lg font-bold`}
-              >
-                Space
-              </h1>
-            </Link>
-            <Link className="flex items-center gap-2" href="/flashcard">
-              <Image
-                src={
-                  pathname === "/flashcard"
-                    ? "/assets/card-active.png"
-                    : "/assets/card.png"
-                }
-                width={40}
-                height={40}
-                alt=""
-              />
-              <h1
-                className={`text-center ${
-                  pathname === "/flashcard" ? "text-teal-950" : "text-slate-400"
-                } text-lg font-bold`}
-              >
-                Flashcards
-              </h1>
-            </Link>
-            <Link className="flex items-center gap-2" href="/generate">
-              <Image
-                src={
-                  pathname === "/generate"
-                    ? "/assets/logo-active.png"
-                    : "/assets/logo.png"
-                }
-                width={40}
-                height={40}
-                alt=""
-              />
-              <h1
-                className={`text-left ${
-                  pathname === "/generate" ? "text-teal-950" : "text-slate-400"
-                } text-lg font-bold`}
-              >
-                Generate Cards
-              </h1>
-            </Link>
+            {SideBarItems.map((item, key) => (
+              <SideBarItem {...item} pathname={pathname} key={key} />
+            ))}
           </div>
         </div>
         <div
@@ -186,7 +154,7 @@ export default function Sidebar() {
                   alt=""
                   className="h-[50px] w-[50px] rounded-full"
                 />
-                <div>
+                <div className="flex flex-col items-start">
                   <h1>{name}</h1>
                   <h3 className="text-sm text-teal-300">{role}</h3>
                 </div>

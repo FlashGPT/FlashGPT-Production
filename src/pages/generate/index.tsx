@@ -78,15 +78,14 @@ export default function Generate({ categories, user }: Props) {
     }
 
     // const promises = uploadedFiles.map((file) => parseFlashcard(file));
-    console.log("parsing...")
-    const combinedContent: string[] = []
+    console.log("parsing...");
+    const combinedContent: string[] = [];
     for (let i = 0; i < uploadedFiles.length; i++) {
       const data = await extractTextFromPDF(uploadedFiles[i]);
-      combinedContent.push(data)
+      combinedContent.push(data);
     }
 
     try {
-
       console.log("Generating...", combinedContent);
       const completions = await openaiPrompt(combinedContent);
 
@@ -196,8 +195,8 @@ export default function Generate({ categories, user }: Props) {
         <button
           className={`bg-darkBlue text-white py-2 px-4 rounded-lg w-[200px] ${
             isLoading || !selectedCategory || flashcardDeckName === ""
-              ? "opacity-50 bg-grey hover:opacity-50 cursor-default"
-              : "hover:opacity-80 cursor-pointer"
+              ? "opacity-80 bg-grey hover:opacity-80 cursor-default"
+              : "hover:opacity-80 cursor-pointer transition-all"
           }}`}
           onClick={generateFlashCards}
           disabled={isLoading || !selectedCategory || flashcardDeckName === ""}
@@ -224,14 +223,14 @@ export async function getServerSideProps(context: any) {
         },
       };
     }
-  
+
     const session = result.session;
     if (!session || !session.user || !session.user.email) {
       return {
         props: {},
       };
     }
-  
+
     const auth = await fetchAuthUsernameAll("", session.user.email);
     const user = auth[0];
     const categories = user.category;
@@ -243,14 +242,11 @@ export async function getServerSideProps(context: any) {
         user,
       },
     };
-  
-  } catch (error:any) {
+  } catch (error: any) {
     console.error(error.message);
   }
 
   return {
-    props: {
-    },
+    props: {},
   };
-  
-} 
+}

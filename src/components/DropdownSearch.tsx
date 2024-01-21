@@ -125,11 +125,12 @@ function DropdownSearch(props: Props) {
         onInputChange={(event, value) => {
           handleInputChange(event, value);
         }}
+        className="shadow-sm"
       />
       <button
         className={`rounded-full px-6 m-2 text-white text-sm bg-darkBlue shadow-md ${
-          isAddable || props.isLoading ? "opacity-100" : "opacity-50 bg-blue"
-        }}`}
+          isAddable || props.isLoading ? "opacity-100" : "opacity-80 bg-blue"
+        }} hover:opacity-80 transition-all`}
         onClick={() =>
           createCategoryHandler({
             categoryName: selectedName,

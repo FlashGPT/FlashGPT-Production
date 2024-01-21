@@ -53,7 +53,7 @@ export default function Space({ calendars, flashcardDecks }: Props) {
   return (
     <div className="w-full flex items-left justify-left overflow-scroll my-16 mx-8">
       <div className="basis-1/3 h-full">
-        <div className="m-5 p-5 rounded-lg bg-whitish">
+        <div className="my-5 p-5 rounded-lg bg-whitish shadow-lg">
           <div className="flex justify-between">
             <div>
               <h1 className="text-2xl font-semibold">My activity</h1>
@@ -93,7 +93,7 @@ export default function Space({ calendars, flashcardDecks }: Props) {
       </div>
 
       <div className="basis-2/3 h-full">
-        <div className="m-5 p-5 rounded-lg bg-lightblue">
+        <div className="m-5 p-5 rounded-lg bg-lightblue shadow-lg">
           <div className="flex justify-between">
             <div>
               <h1 className="text-2xl font-semibold">Schedule</h1>
@@ -260,13 +260,13 @@ export async function getServerSideProps(context: any) {
   const user = auth[0];
   const flashcardDecks = user.category.flatMap(
     (category) => category.flashcardDeck,
-  )
+  );
 
   return {
     props: {
       calendars,
       user,
-      flashcardDecks
+      flashcardDecks,
     },
   };
 }

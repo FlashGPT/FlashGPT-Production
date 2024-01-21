@@ -13,12 +13,12 @@ function DropzoneComponent({
 }: Props) {
   return (
     <div
-      className={`border border-grey p-4 rounded-md w-full justify-center items-center flex`}
+      className={`border border-grey p-4 rounded-md w-full justify-center items-center flex shadow-md hover:opacity-80`}
     >
       <div
         {...getRootProps()}
         className={`border border-grey border-dashed p-16 rounded-md w-full justify-center items-center flex flex-col ${
-          isDragActive ? "bg-grey opacity-50" : "bg-white"
+          isDragActive ? "bg-gray opacity-50" : "bg-white"
         }`}
       >
         <input {...getInputProps()} />

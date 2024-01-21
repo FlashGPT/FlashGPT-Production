@@ -14,19 +14,19 @@ function DeckComponent({ deck, colors, image }: Props) {
     <div className="flex flex-col justify-center items-center gap-10">
       <Link href={`/flashcard/${deck._id}`}>
         <div
-          className={`h-44 aspect-square rounded-2xl rotate-[10deg] hover:rotate-[-10deg] duration-150`}
+          className={`h-44 aspect-square rounded-2xl rotate-[10deg] hover:rotate-[-10deg] duration-150 shadow-lg`}
           style={{
             backgroundColor: colors[0],
           }}
         >
           <div
-            className={`h-44 aspect-square rounded-2xl rotate-[-20deg] hover:rotate-[20deg] duration-150`}
+            className={`h-44 aspect-square rounded-2xl rotate-[-20deg] hover:rotate-[20deg] duration-150 shadow-lg`}
             style={{
               backgroundColor: colors[1],
             }}
           >
             <div
-              className={`h-44 aspect-square rounded-2xl flex justify-center items-center rotate-[10deg] relative hover:rotate-[-10deg] duration-150`}
+              className={`h-44 aspect-square rounded-2xl flex justify-center items-center rotate-[10deg] relative hover:rotate-[-10deg] duration-150 shadow-lg`}
               style={{
                 backgroundColor: colors[2],
               }}

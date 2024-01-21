@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import ArrowRightRoundedIcon from "@mui/icons-material/ArrowRightRounded";
-import Dropdown from "@/components/dropdown";
+import Dropdown from "@/components/Dropdown";
 import { getCategoryToColorsMap } from "@/utils/createUtils/colorUtils";
 import { getAuthSession } from "@/utils/authUtils/getAuthSession";
 import { fetchAuthUsernameAll } from "@/utils/fetchUtils/fetchAuthUsernameAll";
@@ -59,7 +59,7 @@ export default function Flashcard({
 
   return (
     <div className="h-full w-full flex items-left justify-left my-16 mx-8 flex-col gap-10 overflow-y-scroll">
-      <h1 className="text-4xl font-semibold mt-10">Recent Cards</h1>
+      <h1 className="text-4xl font-semibold">Recent Cards</h1>
       <div className="w-full flex justify-evenly gap-20">
         {decks.map(
           (
@@ -91,7 +91,7 @@ export default function Flashcard({
         {searchFlashCardDecks.map((deck, key) => (
           <Link key={key} href={`/flashcard/${deck._id}`}>
             <div
-              className="p-5 my-2 rounded-lg min-h-28 hover:underline text-white hover:opacity-80 transition-all"
+              className="p-5 my-2 rounded-lg min-h-28 hover:underline text-white hover:opacity-80 transition-all shadow-lg"
               style={{
                 backgroundColor: categoryToColors.get(deck.category.name),
               }}

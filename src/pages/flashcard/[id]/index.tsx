@@ -24,10 +24,12 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
       (deck) => deck._id === deckId,
     );
     setDecks(decks);
-    const flashcards: FlashcardFetch[] = decks.flatMap((deck) => deck.flashcard);
+    const flashcards: FlashcardFetch[] = decks.flatMap(
+      (deck) => deck.flashcard,
+    );
     setFlashcards(flashcards);
-  }, [flashcardDecks])
-  
+  }, [flashcardDecks]);
+
   const [idx, setIdx] = useState(0);
 
   const next = () => {
@@ -45,18 +47,13 @@ export default function FlashcardDetails({ flashcardDecks }: Props) {
   return (
     <div className="h-2/3 w-full my-16 mx-8 space-y-8">
       <div className="flex items-center justify-between font-bold text-2xl">
-        <h1>{decks[0].category.name}</h1>
+        <h1 className="text-4xl font-semibold">{decks[0].category.name}</h1>
       </div>
       <div className="flex items-center text-[#003050] text-xl">
         <ArrowRightRoundedIcon></ArrowRightRoundedIcon>
         {decks[0].name}
       </div>
-      <Carousel
-        next={next}
-        prev={prev}
-        className="h-[500px]"
-        autoPlay={false}
-      >
+      <Carousel next={next} prev={prev} className="h-[500px]" autoPlay={false}>
         <FlashCard key={idx} flashCard={flashcards[idx]} />
       </Carousel>
       <div className="flex w-full justify-center items-start h-full gap-2 mt-2">

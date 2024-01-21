@@ -1,7 +1,8 @@
-# FlashGPT
+<div style="display: flex; align-items: center; justify-content: center;">
+    <div style="font-size: 28px;">FlashGPT</div>
+    <img src="public/assets/logo.png" width="50" alt="Logo" style="margin-left: 10px;" />
+</div>
 FlashGPT is your flashcard writing buddy, generating flashcards straight from your lecture notes, slides or textbook. With the power of GPT, FlashGPT is able to generate flashcards in an instant, so that you do not have to spend time manually creating them and can go straight into revision. 
-
-<img src="public/readme/review-answers.png" width="90%"/>
 
 - Try out FlashGPT today [here](https://flashgpt.vercel.app/)! 🤩
 
@@ -26,6 +27,9 @@ Generate flashcards from your notes and slides in an instant
 
 Store your flashcards and review them anytime.
 <img src="public/readme/flashcard.png" width="90%"/>
+
+Review your flashcards
+<img src="public/readme/review-answers.png" width="90%"/>
 
 Keep track of your progress.
 <img src="public/readme/space.png" width="90%"/>

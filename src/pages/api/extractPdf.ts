@@ -24,10 +24,10 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     const options: PDFExtractOptions = {
       normalizeWhitespace: true,
     };
-    console.log("filepath", file[0].filepath, file[0])
+    console.log("filepath", file[0].filepath, file[0]);
     const result = await pdfExtract.extract(file[0].filepath, options);
 
-    console.log("result", result)
+    console.log("result", result);
 
     const document: string[] = [];
     result.pages.map((item) => {

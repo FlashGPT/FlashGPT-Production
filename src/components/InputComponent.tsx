@@ -11,7 +11,7 @@ function InputComponent({ label, value, onChange }: Props) {
     <div className="flex items-center gap-2">
       <h1>{label}</h1>
       <input
-        className="border border-gray rounded-md px-5 py-3"
+        className="border border-gray rounded-md px-5 py-3 shadow-sm"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />

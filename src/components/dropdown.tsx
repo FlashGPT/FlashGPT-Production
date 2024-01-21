@@ -32,7 +32,9 @@ function Dropdown(props: Props) {
         marginTop: 0,
         width: 250,
         height: 50,
+        shadow: 3,
       }}
+      className="shadow-sm"
     >
       <MenuItem value="all">All</MenuItem>
       {props.arr.map((item, key) => {
