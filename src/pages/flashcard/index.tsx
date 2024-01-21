@@ -8,7 +8,6 @@ import { fetchAuthUsernameAll } from "@/utils/fetchUtils/fetchAuthUsernameAll";
 import DeckComponent from "@/components/flashcardComponents/DeckComponent";
 import Link from "next/link";
 
-
 import {
   AuthFetch,
   CalendarFetch,
