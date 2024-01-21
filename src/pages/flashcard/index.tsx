@@ -58,7 +58,7 @@ export default function Flashcard({
   ];
 
   return (
-    <div className="h-full w-full flex items-left justify-left my-16 mx-8 flex-col gap-10 overflow-y-scroll">
+    <div className="max-h-screen w-full flex items-left justify-left my-16 mx-8 flex-col gap-10 overflow-y-scroll">
       <h1 className="text-4xl font-semibold">Recent Cards</h1>
       <div className="w-full flex justify-evenly gap-20">
         {decks.map(
