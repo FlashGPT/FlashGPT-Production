@@ -123,7 +123,7 @@ export default function Generate({ categories, user }: Props) {
         resFlashcardDeck,
       );
 
-      router.push(`/flashcard/${resFlashcardDeck}`);
+      router.push(`/flashcard`);
     } catch (error) {
       console.error("Error parsing flashcards:", error);
       throw error; // Rethrow the error if needed
