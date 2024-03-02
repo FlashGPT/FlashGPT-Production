@@ -47,7 +47,7 @@ function AuthForm({
           <h1>Email</h1>
           <input
             {...register("email")}
-            placeholder="Your email here"
+            placeholder="Your email here..."
             type="text"
             className="border border-gray shadow-lg rounded-lg px-5 py-3"
           />
@@ -56,8 +56,8 @@ function AuthForm({
           <h1>Password</h1>
           <input
             {...register("password")}
-            placeholder="Password"
-            type="Your password here"
+            placeholder="Your password here..."
+            type="password"
             className="border border-gray shadow-lg rounded-lg px-5 py-3"
           />
         </div>
